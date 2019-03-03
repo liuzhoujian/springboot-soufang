@@ -1,0 +1,67 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123
+    url: jdbc:mysql://localhost:3306/soufang
+    type: com.alibaba.druid.pool.DruidDataSource
+
+    #Druid
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    filters: stat,wall,log4j
+    maxPoolPreparedStatementPerConnectionSize: 20
+    useGlobalDataSourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+
+  ##multipart config
+  servlet:
+    multipart:
+      enabled: true
+      location: C:\个人文件\ideaSpace\springboot-soufang\tmp
+      file-size-threshold: 5MB
+      max-request-size: 10MB
+
+  ##session config : save in redis, not memery
+  session:
+    store-type: redis
+
+  ##redis config
+  redis:
+    host: 47.100.187.237
+    database: 0
+    port: 6379
+    jedis:
+      pool:
+        min-idle: 1
+    timeout: 3000
+
+  ##kafka config
+  kafka:
+    bootstrap-servers: 47.100.187.237:9092
+    consumer:
+      group-id: xunwu
+
+  ##elasticsearch config
+  data:
+    elasticsearch:
+      cluster-name: docker-cluster
+      cluster-nodes: 47.100.187.237:9300
+
+##qiniu config
+qiniu:
+  AccessKey: 8lbSRvh5htu5Nm3YBFIHUqzEFwdIF5L3iUeshgMK
+  SecretKey: xwkXN-_xNJdxkzikMGbXNi_ZCJdar8Y1ScVBIOhq
+  Bucket: repository
+  cdn:
+    prefix: http://pm6sgrhby.bkt.clouddn.com/
+

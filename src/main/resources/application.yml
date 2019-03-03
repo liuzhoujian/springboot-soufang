@@ -1,0 +1,23 @@
+spring:
+  profiles:
+    active: dev #active dev
+
+  # jpa config
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: validate #validate
+    properties:
+      hibernate.format_sql: true #format-sql
+  #thymeleaf 禁用缓存
+  thymeleaf:
+    cache: false
+  ##devtools
+  devtools:
+    restart:
+      enabled: true
+
+#logging
+logging:
+  level:
+    org.hibernate.SQL: debug
